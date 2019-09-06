@@ -9,7 +9,7 @@ function ctrl_c() {
 }
     
 if [[ -z "${POSHC2_DIR}" ]]; then
-    POSH_DIR="/opt/PoshC2"
+    POSH_DIR="/opt/PoshC2_Python"
 else
     POSH_DIR=${POSHC2_DIR} 
 fi
@@ -17,8 +17,8 @@ fi
 pushd $POSH_DIR  >/dev/null
 
 if [ "$?" -eq "0" ]; then
-
-    python3 -m pipenv run python3 -u C2Server.py | tee -a "$POSH_DIR/project/poshc2_server.log"
+    posh-docker-clean
+    sudo docker build --no-cache -t nettitude/poshc2 .
     popd > /dev/null
 
 fi 

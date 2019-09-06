@@ -57,6 +57,7 @@ ServerHeader = "Apache"
 Insecure = "[System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}"
 
 # DO NOT CHANGE #
+ROOTDIR = POSHDIR + "project/"
 FilesDirectory = "%sFiles%s" % (POSHDIR, os.sep)
 PayloadsDirectory = "%spayloads%s" % (ROOTDIR, os.sep)
 ModulesDirectory = "%sModules%s" % (POSHDIR, os.sep)
