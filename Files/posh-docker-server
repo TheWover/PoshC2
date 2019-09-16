@@ -1,15 +1,15 @@
 #!/bin/bash
 
-if [[ "$1" -ne "" ]]; then
-    port="$1"
+if [[ -z "${POSHC2_DIR}" ]]; then
+    project_folder="/opt/PoshC2_Python/project"
 else
-    port="443"
+    project_folder="${POSHC2_DIR}/project"
 fi
 
-if [[ -z "${POSHC2_PROJDIR}" ]]; then
-    project_folder="/opt/PoshC2_Project"
-else
-    project_folder=${POSHC2_PROJDIR} 
+if [[ ! -d "$project_folder" ]]; then
+    mkdir -p "$project_folder" > /dev/null 2>&1
 fi
 
-sudo docker run -ti --rm -p "$port":443 -v $project_folder:/opt/PoshC2_Python/project nettitude/poshc2 /usr/bin/posh-docker-entrypoint
+port=$(cat $project_folder/Config.py | grep "PORT_NUMBER" | cut -d " " -f 3)
+
+sudo docker run -ti --rm -p "$port":443 -v "$project_folder:/opt/PoshC2_Python/project" nettitude/poshc2 /usr/bin/posh-docker-entrypoint

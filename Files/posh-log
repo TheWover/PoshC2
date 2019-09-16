@@ -3,7 +3,7 @@
 if [[ -z "${POSHC2_DIR}" ]]; then
     POSH_DIR="/opt/PoshC2_Python"
 else
-    POSH_DIR=${POSHC2_DIR} 
+    POSH_DIR="${POSHC2_DIR}"
 fi
 
 tail -n 5000 -f "$POSH_DIR/project/poshc2_server.log" 2>/dev/null\

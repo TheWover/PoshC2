@@ -11,15 +11,13 @@ function ctrl_c() {
 if [[ -z "${POSHC2_DIR}" ]]; then
     POSH_DIR="/opt/PoshC2_Python"
 else
-    POSH_DIR=${POSHC2_DIR} 
+    POSH_DIR="${POSHC2_DIR}" 
 fi
 
-pushd $POSH_DIR  >/dev/null
-
+pushd "$POSH_DIR"  >/dev/null
 if [ "$?" -eq "0" ]; then
     posh-docker-clean
-    sudo docker build -t nettitude/poshc2 .
+    sudo docker build -t nettitude/poshc2 . "$@"
     popd > /dev/null
-
 fi 
 

@@ -3,7 +3,7 @@
 if [[ -z "${POSHC2_DIR}" ]]; then
      POSH_DIR="/opt/PoshC2"
 else
-     POSH_DIR=${POSHC2_DIR}
+     POSH_DIR="${POSHC2_DIR}"
 fi
 
 if [[ ! -d "$POSH_DIR/project" ]]; then
