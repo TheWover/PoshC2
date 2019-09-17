@@ -88,7 +88,7 @@ class MyHandler(BaseHTTPRequestHandler):
         s.sys_version = ""
         s.send_response(200)
         s.send_header("Content-type", "text/html")
-        s.end_headers()        
+        s.end_headers()
 
     def do_PUT(s):
         """Respond to a PUT request."""
@@ -96,7 +96,7 @@ class MyHandler(BaseHTTPRequestHandler):
         s.sys_version = ""
         s.send_response(200)
         s.send_header("Content-type", "text/html")
-        s.end_headers()  
+        s.end_headers()
 
     def do_GET(s):
         """Respond to a GET request."""
@@ -419,7 +419,8 @@ class MyHandler(BaseHTTPRequestHandler):
                             filename = filename.replace("'", "")
                             filename = filename.replace('"', "")
                             filename = filename.replace("\\", "/")
-                            directory, filename = filename.rsplit('/', 1)
+                            directory = filename
+                            filename = filename.rsplit('/', 1)[1]
                             filename = filename.rstrip('\x00')
                             original_filename = filename.strip()
 
@@ -531,7 +532,7 @@ class MyHandler(BaseHTTPRequestHandler):
                         if (len(sharpout) > 0):
                             s.wfile.write(sharpout)
                     except URLError as e:
-                        try: 
+                        try:
                             s.send_response(res.getcode())
                         except:
                             s.send_response(500)
@@ -544,7 +545,7 @@ class MyHandler(BaseHTTPRequestHandler):
                         open("%swebserver.log" % ROOTDIR, "a").write("[-] URLError with SharpSocks - is SharpSocks running %s%s\r\n%s\r\n" % (SocksHost, UriPath, traceback.format_exc()))
                         open("%swebserver.log" % ROOTDIR, "a").write("[-] SharpSocks  %s\r\n" % e)
                     except HTTPError as e:
-                        try: 
+                        try:
                             s.send_response(res.getcode())
                         except:
                             s.send_response(500)

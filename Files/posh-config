@@ -12,6 +12,7 @@ fi
 
 if [[ ! -f "$POSH_DIR/project/Config.py" ]]; then
     cp "$POSH_DIR/Config.py" "$POSH_DIR/project/Config.py"
+    sed -i "s/### DO NOT.*$//g" "$POSH_DIR/project/Config.py"
 fi
 
 if [[ "$EDITOR" != "" ]]; then

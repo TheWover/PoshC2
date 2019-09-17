@@ -10,9 +10,10 @@ fi
 if [[ ! -f "$POSH_DIR/project/Config.py" ]]; then
     mkdir -p "$POSH_DIR/project" > /dev/null 2>&1
     cp "$POSH_DIR/Config.py" "$POSH_DIR/project/Config.py" > /dev/null 2>&1
+    sed -i "s/### DO NOT.*$//g" "$POSH_DIR/project/Config.py"
     echo "No Config.py was found for this project, one has been created in the project folder, please edit it and relaunch"
 else
-    port=$(cat $project_folder/Config.py | grep "PORT_NUMBER" | cut -d " " -f 3)
+    port=$(cat "$POSH_DIR/project/Config.py" | grep "PORT_NUMBER" | cut -d " " -f 3)
 
     sudo docker run -ti --rm -p "$port":443 -v "$POSH_DIR/project:/opt/PoshC2_Python/project" nettitude/poshc2 /usr/bin/posh-server
 fi

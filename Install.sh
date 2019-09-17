@@ -83,7 +83,6 @@ cp "$POSH_DIR/Files/posh-stop-service" /usr/bin
 cp "$POSH_DIR/Files/posh-update" /usr/bin
 cp "$POSH_DIR/Files/posh-docker" /usr/bin
 cp "$POSH_DIR/Files/posh-docker-server" /usr/bin
-cp "$POSH_DIR/Files/posh-docker-entrypoint" /usr/bin
 cp "$POSH_DIR/Files/posh-docker-build" /usr/bin
 cp "$POSH_DIR/Files/posh-docker-clean" /usr/bin
 chmod +x /usr/bin/fpc
@@ -96,7 +95,6 @@ chmod +x /usr/bin/posh-stop-service
 chmod +x /usr/bin/posh-update
 chmod +x /usr/bin/posh-docker
 chmod +x /usr/bin/posh-docker-server
-chmod +x /usr/bin/posh-docker-entrypoint
 chmod +x /usr/bin/posh-docker-build
 chmod +x /usr/bin/posh-docker-clean
 
@@ -106,7 +104,7 @@ cp "$POSH_DIR/poshc2.service" /lib/systemd/system/poshc2.service
 # Creating Project folder
 mkdir "$POSH_DIR/project"
 cp "$POSH_DIR/Config.py" "$POSH_DIR/project/Config.py"
-sed -i "s/### DO NOT.*$/d" "$POSH_DIR/project/Config.py"
+sed -i "s/### DO NOT.*$//g" "$POSH_DIR/project/Config.py"
 
 # Install requirements of dotnet core for SharpSocks
 echo ""

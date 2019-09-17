@@ -6,3 +6,4 @@
 * Update documentation on readthedocs
 * Update blog post
 * Remove docker branch stuff from install.sh
+* Test SharpSocks (port forwarding?)
